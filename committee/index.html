@@ -110,11 +110,11 @@ section.block { padding-block: 72px 88px; }
 .who .role { font-family: var(--f-display); font-weight: 500; font-size: 15px; color: var(--ink); margin: 6px 0 2px; }
 .who .meta { font-size: 15px; color: var(--muted); margin: 0; }
 
-.join { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 32px; align-items: center; padding: 26px 28px; border: 1px solid var(--line); background: var(--surface); }
-.join h2 { font-size: 1.3rem; letter-spacing: -0.01em; }
-.join p { margin: 6px 0 0; color: var(--muted); max-width: 60ch; }
-.join .addr { font-family: var(--f-mono); font-size: 14px; color: var(--ink); user-select: all; }
-@media (max-width: 720px) { .join { grid-template-columns: minmax(0, 1fr); padding: 22px 18px; } }
+.members > li.join-cell { grid-column: span var(--span, 1); background: var(--brand); color: var(--on-brand); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 28px; }
+.join-cell > div { flex: 1 1 260px; min-width: 0; }
+.join-cell h2 { font-size: 1.25rem; letter-spacing: -0.01em; }
+.join-cell p { margin: 6px 0 0; color: #DCEAE2; font-size: 15.5px; max-width: 52ch; }
+@media (max-width: 960px) { .members > li.join-cell { grid-column: auto; } }
 
 .site-footer { background: var(--brand); color: var(--on-brand); }
 .site-footer .wrap { padding-block: 56px 36px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px 40px; align-items: center; }
@@ -175,6 +175,10 @@ section.block { padding-block: 72px 88px; }
           <div class="who"><h2>Adam Kebbouche</h2><p class="role">Co-President</p><p class="meta">St Peter’s · Biochemistry</p></div>
         </li>
         <li>
+          <div class="tile chem" aria-hidden="true"><span class="r">Vice-Pres</span><span class="sym">Cl</span><span class="sub">Chem</span></div>
+          <div class="who"><h2>Chun Lam</h2><p class="role">Vice-President</p><p class="meta">Hertford · Chemistry</p></div>
+        </li>
+        <li>
           <div class="tile chem" aria-hidden="true"><span class="r">Treasurer</span><span class="sym">Ck</span><span class="sub">Chem</span></div>
           <div class="who"><h2>Chaehee Kim</h2><p class="role">Treasurer</p><p class="meta">University College · Chemistry</p></div>
         </li>
@@ -190,15 +194,15 @@ section.block { padding-block: 72px 88px; }
           <div class="tile chem" aria-hidden="true"><span class="r">Sponsorship</span><span class="sym">Cn</span><span class="sub">Chem</span></div>
           <div class="who"><h2>Ching Ngan</h2><p class="role">Sponsorship Officer</p><p class="meta">St Hugh’s · Chemistry</p></div>
         </li>
+        <!-- Fills the rest of the last row. With 7 members: spans 2 of 3 columns on desktop. Adjust --span if the count changes. -->
+        <li class="join-cell" style="--span: 2">
+          <div>
+            <h2>Want to join the committee?</h2>
+            <p>New committee members are elected at our AGM each year. Join the mailing list to hear when applications open, or email us with any questions.</p>
+          </div>
+          <a class="btn btn-gold" href="../#mailing-list">Join the mailing list</a>
+        </li>
       </ul>
-
-      <div class="join">
-        <div>
-          <h2>Want to join the committee?</h2>
-          <p>New committee members are elected at our AGM each year. Join the mailing list to hear when applications open, or email us with any questions.</p>
-        </div>
-        <a class="btn btn-gold" href="../#mailing-list">Join the mailing list</a>
-      </div>
     </div>
   </section>
 </main>
