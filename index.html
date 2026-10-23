@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F3D2E">
+<meta property="og:title" content="OUCB · Oxford University Chemistry &amp; Biochemistry Society">
+<meta property="og:description" content="Academic talks, workshops and socials for students with a passion for chemistry, biochemistry and STEM.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oucb.uk/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230F3D2E'/%3E%3Ccircle cx='32' cy='32' r='15' fill='%23F2C14E'/%3E%3C/svg%3E">
+<title>OUCB · Oxford University Chemistry &amp; Biochemistry Society</title>
+<meta name="description" content="Oxford University Chemistry & Biochemistry Society: academic talks, workshops and socials for students with a passion for chemistry, biochemistry and STEM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the 2×2 grid monogram drives everything. Green brand band (header + hero),
+   then light sections on a 12-col container; activities sit in a ruled 2×2 grid of element tiles. */
+:root {
+  --brand: #0F3D2E;        /* deep green, constant across themes */
+  --brand-2: #174E3B;
+  --brand-line: #2E6B55;
+  --gold: #F2C14E;
+  --mint: #CFE3D8;
+  --on-brand: #FFFFFF;
+
+  --bg: #F4F7F3;
+  --surface: #FFFFFF;
+  --ink: #0C2219;
+  --muted: #4B6157;
+  --line: #D6E2DA;
+  --tile: #E8F0EA;
+  --link: #0F3D2E;
+  --btn-bg: #0F3D2E;
+  --btn-fg: #FFFFFF;
+  --btn-hover: #174E3B;
+  --danger: #A63A2A;
+  --field: #FFFFFF;
+
+  --f-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --wrap: 1120px;
+  --gut: max(16px, env(safe-area-inset-left, 0px));
+  --gut-r: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #09170F; --surface: #0E2219; --ink: #E4EEE8; --muted: #98B2A5;
+    --line: #1F3B30; --tile: #13302A; --link: #F2C14E; --brand-line: #2E6B55;
+    --btn-bg: #F2C14E; --btn-fg: #0F3D2E; --btn-hover: #F6CF6E;
+    --danger: #F29482; --field: #0A1B13;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #09170F; --surface: #0E2219; --ink: #E4EEE8; --muted: #98B2A5;
+  --line: #1F3B30; --tile: #13302A; --link: #F2C14E; --brand-line: #2E6B55;
+  --btn-bg: #F2C14E; --btn-fg: #0F3D2E; --btn-hover: #F6CF6E;
+  --danger: #F29482; --field: #0A1B13;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--brand);
+}
+img { max-width: 100%; }
+a { color: var(--link); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
+
+.wrap {
+  max-width: var(--wrap); margin-inline: auto;
+  padding-left: var(--gut); padding-right: var(--gut-r);
+}
+@media (min-width: 768px) {
+  .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); }
+}
+
+/* ---------- Monogram ---------- */
+.mono { display: block; overflow: visible; }
+.mono .dot { fill: var(--gold); transform-origin: 25px 25px; }
+.mono .letters { fill: currentColor; font-family: var(--f-display); font-weight: 700; font-size: 50px; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: var(--brand); color: var(--on-brand);
+  border-bottom: 1px solid rgba(207, 227, 216, 0.14);
+}
+.site-header .wrap { display: flex; align-items: center; gap: 24px; min-height: 68px; }
+.brand { display: flex; align-items: center; gap: 14px; color: inherit; text-decoration: none; min-width: 0; }
+.brand .mono { width: 38px; height: 38px; flex-shrink: 0; }
+.brand-name {
+  font-family: var(--f-display); font-size: 11px; font-weight: 500; line-height: 1.35;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint);
+}
+.nav { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+.nav a {
+  color: var(--mint); text-decoration: none; font-family: var(--f-display); font-size: 15px; font-weight: 500;
+  padding: 8px 12px; border-radius: 3px;
+}
+.nav a:not(.btn):hover { color: var(--on-brand); background: rgba(255,255,255,0.06); }
+.nav .btn { margin-left: 8px; }
+@media (max-width: 1000px) { .nav a:not(.btn) { display: none; } }
+.site-header { transition: box-shadow .25s ease; }
+.site-header.scrolled { box-shadow: 0 8px 24px -12px rgba(4, 20, 14, 0.55); }
+@media (max-width: 520px) { .brand-name { display: none; } }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; justify-content: center;
+  font-family: var(--f-display); font-weight: 700; font-size: 16px; letter-spacing: 0.01em;
+  padding: 13px 22px; border-radius: 3px; text-decoration: none; border: 1.5px solid transparent;
+  transition: transform .15s ease, background-color .15s ease, color .15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-gold { background: var(--gold); color: var(--brand) !important; }
+.btn-gold:hover { background: #F6CF6E; }
+.btn-ghost { border-color: rgba(207, 227, 216, 0.45); color: var(--on-brand); }
+.btn-ghost:hover { border-color: var(--on-brand); }
+.btn-ink { background: var(--btn-bg); color: var(--btn-fg); }
+.btn-ink:hover { background: var(--btn-hover); }
+.nav .btn { padding: 9px 16px; font-size: 15px; }
+.btn svg { width: 16px; height: 16px; }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } .btn:hover { transform: none; } }
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--brand); color: var(--on-brand); position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(207,227,216,0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(207,227,216,0.07) 1px, transparent 1px);
+  background-size: 96px 96px;
+  -webkit-mask-image: linear-gradient(to left, #000 10%, transparent 75%);
+  mask-image: linear-gradient(to left, #000 10%, transparent 75%);
+}
+.hero .wrap {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
+  gap: 48px; align-items: center; padding-block: 88px 104px;
+}
+.eyebrow {
+  font-family: var(--f-mono); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--mint); display: inline-flex; align-items: center; gap: 10px; margin: 0 0 22px;
+}
+.eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+.hero h1 {
+  font-size: clamp(2.4rem, 5.2vw, 4.4rem); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700;
+  max-width: 13ch;
+}
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero p.lede {
+  font-size: clamp(1.05rem, 1.6vw, 1.22rem); color: #DCEAE2; max-width: 46ch; margin: 26px 0 36px;
+}
+.hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-mark { justify-self: end; width: min(100%, 340px); }
+.hero-mark .mono { width: 100%; height: auto; }
+.hero-mark .dot { animation: settle 1.1s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes settle { from { transform: scale(.55); } to { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .hero-mark .dot { animation: none; } }
+
+/* Hero 'O' becomes an atom on hover: orbits draw in, electrons circle, a halo pulses, and the nucleus leans toward the cursor */
+.hero-mark { cursor: default; -webkit-tap-highlight-color: transparent; }
+.hero-mark .atom { transform: translate(var(--mx, 0px), var(--my, 0px)); transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+.hero-mark .halo { fill: var(--gold); opacity: 0; transform-origin: 25px 25px; }
+/* Each orbit is split in two: the back half is drawn behind the gold nucleus, the front half over it,
+   so electrons pass in front of the circle for half their path and disappear behind it for the other half. */
+.hero-mark .rings path { fill: none; stroke: var(--gold); stroke-width: .7; stroke-linecap: butt; stroke-dasharray: 100 101; stroke-dashoffset: 100.5; transition: stroke-dashoffset .5s ease; }
+.hero-mark .rings.back path { stroke-opacity: .6; }
+.hero-mark .electrons { opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility 0s .25s; }
+.hero-mark .electrons circle { fill: #FFFFFF; stroke: var(--brand); stroke-width: .7; }
+.hero-mark .electrons.back circle { fill: #E3EEE8; }
+.hero-mark.lit .rings path { stroke-dashoffset: 0; transition: stroke-dashoffset .9s cubic-bezier(.2,.7,.2,1); }
+.hero-mark.lit .rings path:nth-child(2) { transition-delay: .08s; }
+.hero-mark.lit .rings path:nth-child(3) { transition-delay: .16s; }
+.hero-mark.lit .electrons { opacity: 1; visibility: visible; transition: opacity .4s .35s ease, visibility 0s .35s; }
+.hero-mark.lit .halo { animation: halo 2.2s ease-out infinite; }
+@media (hover: hover) {
+  .hero-mark:hover .rings path { stroke-dashoffset: 0; transition: stroke-dashoffset .9s cubic-bezier(.2,.7,.2,1); }
+  .hero-mark:hover .rings path:nth-child(2) { transition-delay: .08s; }
+  .hero-mark:hover .rings path:nth-child(3) { transition-delay: .16s; }
+  .hero-mark:hover .electrons { opacity: 1; visibility: visible; transition: opacity .4s .35s ease, visibility 0s .35s; }
+  .hero-mark:hover .halo { animation: halo 2.2s ease-out infinite; }
+}
+@keyframes halo { 0% { transform: scale(1); opacity: .28; } 100% { transform: scale(1.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-mark .atom, .hero-mark .rings path { transition: none !important; }
+  .hero-mark .electrons { display: none; }
+  .hero-mark:hover .halo, .hero-mark.lit .halo { animation: none !important; opacity: .14; transform: scale(1.3); }
+}
+.hero-mark figcaption {
+  margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--brand-line);
+  font-family: var(--f-display); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--mint); line-height: 1.6;
+}
+@media (max-width: 820px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 56px 64px; }
+  .hero-mark { justify-self: start; width: 132px; grid-row: 1; }
+  .hero-mark figcaption { display: none; }
+}
+
+/* ---------- Sections ---------- */
+section.block { padding-block: 96px; border-bottom: 1px solid var(--line); }
+section.block.alt { background: var(--surface); }
+@media (max-width: 720px) { section.block { padding-block: 64px; } }
+.split { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 48px; }
+@media (max-width: 900px) { .split { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+.sec-head h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.08; }
+.sec-head p { color: var(--muted); margin: 14px 0 0; max-width: 36ch; }
+.kicker {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 14px;
+}
+.prose p { margin: 0 0 1em; max-width: 62ch; }
+.prose p:first-child { font-size: 1.24rem; line-height: 1.5; }
+
+blockquote.curie {
+  margin: 36px 0 0; padding: 26px 0 0; border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: start; max-width: 62ch;
+}
+blockquote.curie .q {
+  font-family: var(--f-display); font-size: 3rem; line-height: .8; color: var(--gold); font-weight: 700;
+}
+blockquote.curie p { margin: 0; font-style: italic; font-size: 1.15rem; }
+blockquote.curie cite {
+  display: block; margin-top: 8px; font-style: normal; font-family: var(--f-mono); font-size: 12.5px;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ---------- Activities: ruled 2×2 grid ---------- */
+.grid2 {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+}
+.grid2 > * { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+@media (max-width: 640px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+.act { padding: 32px 30px 34px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: start; }
+.act h3 { font-size: 1.3rem; letter-spacing: -0.01em; margin: 2px 0 8px; }
+.act p { margin: 0; color: var(--muted); font-size: 16px; }
+@media (max-width: 420px) { .act { padding: 26px 20px; gap: 16px; } }
+
+.element {
+  width: 68px; height: 68px; border: 1.5px solid var(--ink); background: var(--tile);
+  display: grid; grid-template-rows: auto 1fr auto; padding: 5px 6px 4px; font-variant-numeric: tabular-nums;
+}
+.element .z, .element .m { font-family: var(--f-mono); font-size: 9.5px; line-height: 1.1; color: var(--muted); }
+.element .m { text-align: center; }
+.element .sym {
+  font-family: var(--f-display); font-weight: 700; font-size: 26px; line-height: 1;
+  align-self: center; text-align: center; color: var(--ink);
+}
+
+/* ---------- Membership ---------- */
+.member { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+@media (max-width: 900px) { .member { grid-template-columns: minmax(0, 1fr); gap: 40px; } }
+.ticks { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 14px; }
+.ticks li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: baseline; }
+.ticks li::before {
+  content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--gold);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 25%, transparent); transform: translateY(-1px);
+}
+
+.card-col { display: grid; gap: 22px; justify-items: start; }
+.mcard {
+  width: 100%; max-width: 440px; aspect-ratio: 85.6 / 53.98; /* ISO/IEC 7810 ID-1, the size of a bank card */
+  background: var(--brand); color: var(--on-brand); border-radius: 12px; position: relative; overflow: hidden;
+  padding: 7% 7.5%; display: grid; grid-template-rows: auto 1fr auto;
+  box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 18px 40px -18px rgba(15, 61, 46, .55);
+  text-decoration: none; cursor: pointer;
+}
+.mcard:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+.mcard::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(207,227,216,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(207,227,216,0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: linear-gradient(135deg, transparent 35%, #000 100%);
+  mask-image: linear-gradient(135deg, transparent 35%, #000 100%);
+}
+.mcard-top { display: flex; justify-content: space-between; align-items: start; position: relative; z-index: 1; }
+.mcard .mono { width: 54px; height: 54px; }
+.mcard .tag { font-family: var(--f-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--mint); }
+.mcard-bottom { position: relative; z-index: 1; }
+.mcard .yr { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.1rem); letter-spacing: -0.02em; line-height: 1; }
+.mcard .org { font-family: var(--f-display); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--mint); margin-top: 10px; line-height: 1.5; }
+
+.buy { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.price { font-family: var(--f-display); font-weight: 700; font-size: 1.6rem; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.price small { font-family: var(--f-body); font-weight: 400; font-size: 15px; color: var(--muted); margin-left: 6px; letter-spacing: 0; }
+.fine { font-size: 14.5px; color: var(--muted); margin: 0; max-width: 44ch; }
+
+.form-embed { margin-top: 56px; border: 1px solid var(--line); background: var(--bg); }
+.form-embed header {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 14px 18px; border-bottom: 1px solid var(--line); font-family: var(--f-display); font-weight: 500; font-size: 15px;
+}
+.form-embed iframe { display: block; width: 100%; height: 1100px; border: 0; background: #fff; }
+
+/* ---------- Sponsors ---------- */
+.wall { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.slot {
+  min-height: 132px; border: 1.5px dashed var(--line); border-radius: 4px;
+  display: grid; place-items: center; text-align: center; padding: 20px;
+  color: var(--muted); background: transparent;
+}
+.slot.headline { grid-column: 1 / -1; min-height: 168px; }
+.slot .t { font-family: var(--f-display); font-weight: 500; font-size: 15px; color: var(--ink); }
+.slot .s { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; margin-top: 6px; }
+.slot.filled { border-style: solid; background: var(--surface); text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.slot.filled .plate { background: #FFFFFF; border-radius: 3px; padding: 8px 14px; display: inline-flex; }
+.slot.filled img { max-height: 56px; width: auto; object-fit: contain; display: block; }
+.slot.headline.filled img { max-height: 84px; }
+a.slot.filled:hover { border-color: var(--muted); }
+a.slot.filled:hover .s { color: var(--ink); }
+@media (max-width: 560px) { .wall { gap: 8px; } .slot { min-height: 96px; padding: 12px 8px; } .slot.headline { min-height: 120px; } .slot .s { font-size: 10px; } }
+
+.offer { margin-top: 40px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.offer div { padding: 20px 20px 20px 0; border-bottom: 1px solid var(--line); }
+.offer div:nth-child(odd) { padding-right: 24px; }
+.offer div:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line); }
+.offer h3 { font-size: 1.05rem; margin-bottom: 4px; }
+.offer p { margin: 0; color: var(--muted); font-size: 15.5px; }
+@media (max-width: 640px) {
+  .offer { grid-template-columns: minmax(0, 1fr); }
+  .offer div:nth-child(even) { padding-left: 0; border-left: 0; }
+}
+.sponsor-cta { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.sponsor-cta .addr { font-family: var(--f-mono); font-size: 14px; color: var(--muted); user-select: all; }
+
+/* ---------- Mailing list ---------- */
+.ml-card { border: 1px solid var(--line); background: var(--bg); padding: 32px; border-radius: 4px; }
+@media (max-width: 520px) { .ml-card { padding: 22px 18px; } }
+.ml-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 16px; }
+.ml-grid .full { grid-column: 1 / -1; }
+@media (max-width: 560px) { .ml-grid { grid-template-columns: minmax(0, 1fr); } }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-family: var(--f-display); font-weight: 500; font-size: 14px; }
+.field label .opt { font-weight: 400; color: var(--muted); }
+.field input, .field select {
+  width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: var(--field);
+  border: 1.5px solid var(--line); border-radius: 3px; padding: 11px 12px; min-height: 46px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.field input:focus, .field select:focus {
+  outline: none; border-color: var(--brand-line); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 45%, transparent);
+}
+.field [aria-invalid="true"] { border-color: var(--danger); }
+.field .err { font-size: 13.5px; color: var(--danger); min-height: 0; }
+.consent { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 15px; color: var(--muted); }
+.consent input { width: 18px; height: 18px; min-height: 0; padding: 0; margin: 3px 0 0; accent-color: var(--brand); box-shadow: none; }
+.consent span { font-family: var(--f-body); font-weight: 400; }
+.hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.ml-actions { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+.ml-actions .btn { border: 0; cursor: pointer; }
+.ml-actions .btn[disabled] { opacity: .65; cursor: progress; transform: none; }
+.ml-status { font-size: 14.5px; color: var(--muted); margin: 0; }
+.ml-status.bad { color: var(--danger); }
+.ml-done { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; }
+.ml-done h3 { font-size: 1.35rem; margin-bottom: 4px; }
+.ml-done p { margin: 0; color: var(--muted); }
+.check { width: 56px; height: 56px; }
+.check circle { fill: var(--gold); }
+.check path { fill: none; stroke: var(--brand); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 0; }
+
+/* ---------- Motion (all of it switches off with reduced motion) ---------- */
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop { 0% { transform: scale(.6); } 70% { transform: scale(1.06); } 100% { transform: scale(1); } }
+@keyframes draw { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: var(--d, 0ms); }
+  .hero-mark .letters text { animation: fadein .7s ease both; }
+  .hero-mark .letters text:nth-child(1) { animation-delay: .25s; }
+  .hero-mark .letters text:nth-child(2) { animation-delay: .38s; }
+  .hero-mark .letters text:nth-child(3) { animation-delay: .51s; }
+  .reveal.in { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: var(--d, 0ms); }
+
+  .element { transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
+  .act:hover .element { transform: translate(-2px, -3px) rotate(-3deg); box-shadow: 4px 4px 0 var(--gold); }
+  .mcard { transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s ease; }
+  .card-col:hover .mcard, .mcard:focus-visible { transform: translateY(-5px) rotate(-1.2deg); box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 28px 50px -20px rgba(15, 61, 46, .6); }
+  .mcard .dot { transition: transform .45s cubic-bezier(.2,.7,.2,1); transform-origin: 25px 25px; }
+  .card-col:hover .mcard .dot, .mcard:focus-visible .dot { transform: scale(1.12); }
+  .slot { transition: border-color .2s ease, background-color .2s ease; }
+  .slot:hover { border-color: var(--muted); }
+  .ml-done .check { animation: pop .5s cubic-bezier(.2,.7,.2,1) both; }
+  .ml-done .check path { stroke-dashoffset: 40; animation: draw .45s .25s ease forwards; }
+  .ml-done > div:last-child { animation: rise .5s .1s cubic-bezier(.2,.7,.2,1) both; }
+}
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--brand); color: var(--on-brand); }
+.site-footer .wrap { padding-block: 72px 40px; }
+.foot-top { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+@media (max-width: 760px) { .foot-top { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
+.foot-brand { display: flex; gap: 20px; align-items: center; }
+.foot-brand .mono { width: 72px; height: 72px; flex-shrink: 0; }
+.foot-brand .n { font-family: var(--f-display); font-weight: 700; font-size: 1.35rem; line-height: 1.2; letter-spacing: -0.01em; }
+.foot-brand .s { font-family: var(--f-display); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--mint); margin-top: 6px; }
+.contact h2 { font-size: 1.5rem; margin-bottom: 18px; }
+.contact dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 22px; }
+.contact dt { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--mint); padding-top: 4px; }
+.contact dd { margin: 0; overflow-wrap: anywhere; }
+.contact a { color: var(--on-brand); }
+.contact a:hover { color: var(--gold); }
+.contact .soon { color: var(--mint); font-style: italic; }
+.foot-base {
+  margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--brand-line);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px;
+  font-size: 13.5px; color: var(--mint);
+}
+.foot-base p { margin: 0; max-width: 70ch; }
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="OUCB home">
+      <svg class="mono" viewBox="0 0 100 100" aria-hidden="true"><circle class="dot" cx="25" cy="25" r="17.6"/><g class="letters" text-anchor="middle"><text x="75" y="42.5">U</text><text x="25" y="92.5">C</text><text x="75" y="92.5">B</text></g></svg>
+      <span class="brand-name">Oxford University<br>Chemistry &amp; Biochemistry Society</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#activities">What we do</a>
+      <a href="#membership">Membership</a>
+      <a href="#mailing-list">Mailing list</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-gold" href="#membership" data-member-link>Join</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow rise" id="hero-eyebrow">Michaelmas 2026 · Membership now open</p>
+        <h1 class="rise" style="--d:80ms">Where Oxford’s chemists and biochemists <em>meet.</em></h1>
+        <p class="lede rise" style="--d:160ms">Talks from leading scientists, hands-on workshops and socials across colleges and years. For students with a passion for chemistry, biochemistry and other STEM subjects.</p>
+        <div class="actions rise" style="--d:240ms">
+          <a class="btn btn-gold" href="#membership" data-member-link>Become a member
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#sponsors">Partner with us</a>
+        </div>
+      </div>
+      <figure class="hero-mark" style="margin:0">
+        <svg class="mono" id="hero-mono" viewBox="0 0 100 100" role="img" aria-label="OUCB monogram"><defs><clipPath id="orbit-front"><rect x="-10" y="25" width="70" height="20"/></clipPath></defs><g class="atom"><circle class="halo" cx="25" cy="25" r="17.6"/><g class="rings back"><path pathLength="100" d="M55 25a30 10 0 0 0-60 0"/><path pathLength="100" transform="rotate(60 25 25)" d="M55 25a30 10 0 0 0-60 0"/><path pathLength="100" transform="rotate(120 25 25)" d="M55 25a30 10 0 0 0-60 0"/></g><g class="electrons back"><g><circle r="1.9"><animateMotion dur="2.4s" repeatCount="indefinite" path="M-5 25a30 10 0 1 0 60 0a30 10 0 1 0-60 0"/></circle></g><g transform="rotate(60 25 25)"><circle r="1.9"><animateMotion dur="3s" begin="-1s" repeatCount="indefinite" path="M-5 25a30 10 0 1 0 60 0a30 10 0 1 0-60 0"/></circle></g><g transform="rotate(120 25 25)"><circle r="1.9"><animateMotion dur="3.6s" begin="-2.2s" repeatCount="indefinite" path="M-5 25a30 10 0 1 0 60 0a30 10 0 1 0-60 0"/></circle></g></g><circle class="dot" cx="25" cy="25" r="17.6"/><g class="rings front"><path pathLength="100" d="M-5 25a30 10 0 0 0 60 0"/><path pathLength="100" transform="rotate(60 25 25)" d="M-5 25a30 10 0 0 0 60 0"/><path pathLength="100" transform="rotate(120 25 25)" d="M-5 25a30 10 0 0 0 60 0"/></g><g class="electrons front"><g><g clip-path="url(#orbit-front)"><circle r="1.9"><animateMotion dur="2.4s" repeatCount="indefinite" path="M-5 25a30 10 0 1 0 60 0a30 10 0 1 0-60 0"/></circle></g></g><g transform="rotate(60 25 25)"><g clip-path="url(#orbit-front)"><circle r="1.9"><animateMotion dur="3s" begin="-1s" repeatCount="indefinite" path="M-5 25a30 10 0 1 0 60 0a30 10 0 1 0-60 0"/></circle></g></g><g transform="rotate(120 25 25)"><g clip-path="url(#orbit-front)"><circle r="1.9"><animateMotion dur="3.6s" begin="-2.2s" repeatCount="indefinite" path="M-5 25a30 10 0 1 0 60 0a30 10 0 1 0-60 0"/></circle></g></g></g></g><g class="letters" text-anchor="middle"><text x="75" y="42.5">U</text><text x="25" y="92.5">C</text><text x="75" y="92.5">B</text></g></svg>
+        <figcaption>Oxford University<br>Chemistry &amp; Biochemistry Society</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap split">
+      <div class="sec-head">
+        <p class="kicker">About OUCB</p>
+        <h2>Oxford’s society for chemistry and biochemistry</h2>
+      </div>
+      <div class="prose">
+        <p>We run regular academic talks, workshops and social events for students with a passion for chemistry, biochemistry and other STEM subjects.</p>
+        <p>OUCB is a chance to meet people across colleges and years, and to talk to professionals working in different fields of science. We often collaborate with other Oxford science societies.</p>
+        <blockquote class="curie">
+          <span class="q" aria-hidden="true">“</span>
+          <div>
+            <p>I am among those who think that science has great beauty.</p>
+            <cite>Marie Curie</cite>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="activities">
+    <div class="wrap split">
+      <div class="sec-head">
+        <p class="kicker">What we do</p>
+        <h2>Four kinds of event, every term</h2>
+        <p>From a lecture theatre on a Tuesday night to a black-tie dinner at the end of term.</p>
+      </div>
+      <div class="grid2">
+        <article class="act">
+          <div class="element" aria-label="Tantalum, atomic number 73"><span class="z">73</span><span class="sym">Ta</span><span class="m">180.95</span></div>
+          <div><h3>Talks</h3><p>Lectures from researchers and leading scientists. Past speakers include Professor Peter Atkins.</p></div>
+        </article>
+        <article class="act">
+          <div class="element" aria-label="Tungsten, atomic number 74"><span class="z">74</span><span class="sym">W</span><span class="m">183.84</span></div>
+          <div><h3>Workshops</h3><p>Hands-on sessions that go beyond the syllabus, run with people working in science.</p></div>
+        </article>
+        <article class="act">
+          <div class="element" aria-label="Sulfur, atomic number 16"><span class="z">16</span><span class="sym">S</span><span class="m">32.06</span></div>
+          <div><h3>Socials</h3><p>Crew dates, cocktail evenings and black-tie dinners.</p></div>
+        </article>
+        <article class="act">
+          <div class="element" aria-label="Cobalt, atomic number 27"><span class="z">27</span><span class="sym">Co</span><span class="m">58.933</span></div>
+          <div><h3>Collaborations</h3><p>Joint events with other Oxford science societies.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="membership">
+    <div class="wrap">
+      <div class="member">
+        <div class="sec-head">
+          <p class="kicker">Membership</p>
+          <h2>Join OUCB for <span data-year>2026–27</span></h2>
+          <p style="max-width:44ch">Members get the most out of the society, at every talk, workshop and social we run this year.</p>
+          <ul class="ticks">
+            <li>Entry to our academic talks and workshops</li>
+            <li>Member prices for socials, cocktail evenings and our black-tie dinner</li>
+            <li>Priority booking when places are limited</li>
+            <li>Our mailing list, with every event as soon as it’s announced</li>
+          </ul>
+        </div>
+        <div class="card-col">
+          <a class="mcard" id="mcard" href="#membership" target="_blank" rel="noopener" aria-label="Buy OUCB membership for 2026–27 (opens the membership form)">
+            <div class="mcard-top">
+              <svg class="mono" viewBox="0 0 100 100"><circle class="dot" cx="25" cy="25" r="17.6"/><g class="letters" text-anchor="middle"><text x="75" y="42.5">U</text><text x="25" y="92.5">C</text><text x="75" y="92.5">B</text></g></svg>
+              <span class="tag">Member</span>
+            </div>
+            <span></span>
+            <div class="mcard-bottom">
+              <div class="yr" data-year>2026–27</div>
+              <div class="org">Oxford University Chemistry &amp; Biochemistry Society</div>
+            </div>
+          </a>
+          <div class="buy">
+            <span class="price" id="price" hidden></span>
+            <a class="btn btn-ink" id="buy-btn" href="#membership" target="_blank" rel="noopener">Buy membership
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h8v8M13 3 4 12"/></svg>
+            </a>
+          </div>
+          <p class="fine" id="buy-note">Membership is bought through our Google Form. Fill in your details, follow the payment instructions, and you’re in.</p>
+        </div>
+      </div>
+
+      <div class="form-embed" id="form-embed" hidden>
+        <header><span>Membership form</span><a id="form-newtab" href="#" target="_blank" rel="noopener">Open in a new tab</a></header>
+        <iframe id="form-frame" title="OUCB membership form" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="mailing-list">
+    <div class="wrap split">
+      <div class="sec-head">
+        <p class="kicker">Mailing list</p>
+        <h2>Hear about every event first</h2>
+        <p>Talk announcements, ticket releases and society news, sent straight to your inbox. You don’t need to be a member.</p>
+      </div>
+      <div class="ml-card" id="ml-card">
+        <form id="ml-form" novalidate>
+          <div class="ml-grid">
+            <div class="field">
+              <label for="ml-name">Full name</label>
+              <input id="ml-name" name="name" type="text" autocomplete="name" required>
+              <span class="err" id="ml-name-err" hidden></span>
+            </div>
+            <div class="field">
+              <label for="ml-email">Email</label>
+              <input id="ml-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+              <span class="err" id="ml-email-err" hidden></span>
+            </div>
+            <div class="field full">
+              <label for="ml-college">College <span class="opt">(optional)</span></label>
+              <input id="ml-college" name="college" type="text" list="colleges" placeholder="Start typing, e.g. St Catherine’s" autocomplete="off">
+              <datalist id="colleges"></datalist>
+            </div>
+            <div class="field">
+              <label for="ml-course">Subject <span class="opt">(optional)</span></label>
+              <select id="ml-course" name="course">
+                <option value="">Choose…</option>
+                <option>Chemistry</option>
+                <option>Biochemistry</option>
+                <option>Other STEM subject</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="ml-year">Year <span class="opt">(optional)</span></label>
+              <select id="ml-year" name="year">
+                <option value="">Choose…</option>
+                <option>1st year</option>
+                <option>2nd year</option>
+                <option>3rd year</option>
+                <option>4th year</option>
+                <option>Postgraduate</option>
+                <option>Staff or other</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label class="consent" for="ml-consent">
+                <input id="ml-consent" name="consent" type="checkbox" required>
+                <span>I’m happy to receive emails from OUCB. I can unsubscribe at any time.</span>
+              </label>
+              <span class="err" id="ml-consent-err" hidden></span>
+            </div>
+          </div>
+          <div class="hp" aria-hidden="true"><label for="ml-hp">Leave this empty</label><input id="ml-hp" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+          <div class="ml-actions">
+            <button class="btn btn-ink" id="ml-submit" type="submit">Join the mailing list</button>
+            <p class="ml-status" id="ml-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+        <div class="ml-done" id="ml-done" hidden>
+          <svg class="check" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="28"/><path d="M17 29l7 7 15-16"/></svg>
+          <div>
+            <h3>You’re on the list</h3>
+            <p id="ml-done-text">We’ll email you about upcoming events.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sponsors">
+    <div class="wrap split">
+      <div class="sec-head">
+        <p class="kicker">Sponsors</p>
+        <h2>Our sponsors</h2>
+        <p>Thank you to the organisations supporting OUCB in <span data-year>2026–27</span>. We’re looking for more partners: sponsors reach chemistry and biochemistry students across Oxford’s colleges and years.</p>
+      </div>
+      <div>
+        <div class="wall" id="wall" aria-label="Our sponsors"></div>
+        <div class="offer">
+          <div><h3>Events</h3><p>Your brand at our talks, workshops and socials.</p></div>
+          <div><h3>Mailing list</h3><p>Features in the emails we send to members.</p></div>
+          <div><h3>Website</h3><p>Your logo and a link on this page.</p></div>
+          <div><h3>Students</h3><p>Direct contact with Oxford chemists and biochemists.</p></div>
+        </div>
+        <div class="sponsor-cta">
+          <a class="btn btn-ink" id="sponsor-btn" href="#contact">Become a sponsor</a>
+          <span class="addr" id="sponsor-addr" hidden></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <svg class="mono" viewBox="0 0 100 100" aria-hidden="true"><circle class="dot" cx="25" cy="25" r="17.6"/><g class="letters" text-anchor="middle"><text x="75" y="42.5">U</text><text x="25" y="92.5">C</text><text x="75" y="92.5">B</text></g></svg>
+        <div>
+          <div class="n">Oxford University Chemistry &amp; Biochemistry Society</div>
+          <div class="s">OUCB · Oxford</div>
+        </div>
+      </div>
+      <div class="contact">
+        <h2>Get in touch</h2>
+        <dl id="contact-list">
+          <dt data-row="email" hidden>Email</dt><dd data-row="email" hidden><a id="c-email" href="#"></a></dd>
+          <dt data-row="instagram" hidden>Instagram</dt><dd data-row="instagram" hidden><a id="c-ig" href="#" target="_blank" rel="noopener"></a></dd>
+          <dt data-row="facebook" hidden>Facebook</dt><dd data-row="facebook" hidden><a id="c-fb" href="#" target="_blank" rel="noopener"></a></dd>
+          <dt data-row="x" hidden>X</dt><dd data-row="x" hidden><a id="c-x" href="#" target="_blank" rel="noopener"></a></dd>
+          <dt data-row="linkedin" hidden>LinkedIn</dt><dd data-row="linkedin" hidden><a id="c-li" href="#" target="_blank" rel="noopener">OUCB on LinkedIn</a></dd>
+          <dt>Join</dt><dd><a href="#membership" data-member-link>Membership form</a></dd>
+          <dt>News</dt><dd><a href="#mailing-list">Mailing list sign-up</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>OUCB is a student society registered with the University of Oxford. It is independent of the University.</p>
+      <p>© <span id="yr-now">2026</span> OUCB</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   EDIT HERE — everything you will need to update lives in CONFIG and SPONSORS.
+   ============================================================ */
+const CONFIG = {
+  membershipFormUrl: "https://forms.gle/bSJfry1U9zQ5dh8G8",   // used by every "Buy membership" link
+  // Full "docs.google.com/forms/d/e/…/viewform" link of the same form, used to show it on the page. "" hides it.
+  membershipFormEmbedUrl: "https://docs.google.com/forms/d/e/1FAIpQLScNRU_nPhXD6P3Ql9xoMUZ1CKMYFd_u1oqRVepe4fE4Zznc-g/viewform",
+  // Mailing list sign-ups are emailed to this inbox via FormSubmit (formsubmit.co).
+  // After FormSubmit activates the form, you can swap the address for the random alias it gives you.
+  mailingListEndpoint: "https://formsubmit.co/ajax/ouchemsoc@gmail.com",
+  membershipPrice: "",            // e.g. "£15" — leave "" to hide
+  priceNote: "for the year",      // shown beside the price
+  academicYear: "2026–27",
+  heroEyebrow: "Michaelmas 2026 · Membership now open",
+  email: "ouchemsoc@gmail.com",   // general contact
+  sponsorshipEmail: "",           // falls back to email if empty
+  instagram: "_oucb_",            // handle without @
+  facebook: "oucbsoc",            // page name from facebook.com/…
+  x: "oucbsoc",                   // handle without @
+  linkedin: ""                    // full URL
+};
+
+/* Sponsors shown on the homepage. tier: "headline" or "partner".
+   logo: a file in assets/sponsors/. url: a page on this site (e.g. "sponsorship/tpp/") or a full https:// link. */
+const SPONSORS = [
+  { name: "TPP", tier: "headline", logo: "assets/sponsors/tpp-logo.png", url: "sponsorship/tpp/" },
+  // { name: "Example Ltd", tier: "partner", logo: "assets/sponsors/example.svg", url: "https://example.com" },
+];
+
+/* ============================================================ */
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => document.querySelectorAll(s);
+
+  $$("[data-year]").forEach((el) => (el.textContent = CONFIG.academicYear));
+  if (CONFIG.heroEyebrow) $("#hero-eyebrow").textContent = CONFIG.heroEyebrow;
+  $("#yr-now").textContent = new Date().getFullYear();
+
+  // Membership form
+  const form = (CONFIG.membershipFormUrl || "").trim();
+  const buy = $("#buy-btn");
+  const mcard = $("#mcard");
+  if (form) {
+    buy.href = form;
+    mcard.href = form;
+    $$("[data-member-link]").forEach((a) => { if (a.closest(".nav") || a.closest(".hero")) return; a.href = form; a.target = "_blank"; a.rel = "noopener"; });
+    // Show the form on the page when this is the live site (previews block embeds)
+    let topLevel = false;
+    try { topLevel = window.self === window.top; } catch (e) { topLevel = false; }
+    const embedSrc = (CONFIG.membershipFormEmbedUrl || (/docs\.google\.com\/forms\//.test(form) ? form : "")).trim();
+    if (topLevel && /docs\.google\.com\/forms\//.test(embedSrc)) {
+      const base = embedSrc.split("?")[0].replace(/\/(edit|viewform|formResponse)\/?$/, "/viewform");
+      $("#form-frame").src = base + "?embedded=true";
+      $("#form-newtab").href = form;
+      $("#form-embed").hidden = false;
+    }
+  } else {
+    buy.removeAttribute("target");
+    mcard.removeAttribute("target");
+  }
+  if (CONFIG.membershipPrice) {
+    const p = $("#price");
+    p.innerHTML = "";
+    p.append(CONFIG.membershipPrice);
+    if (CONFIG.priceNote) { const s = document.createElement("small"); s.textContent = CONFIG.priceNote; p.append(s); }
+    p.hidden = false;
+  }
+
+  // Contact rows
+  const show = (key) => $$('[data-row="' + key + '"]').forEach((el) => (el.hidden = false));
+  if (CONFIG.email) { const a = $("#c-email"); a.textContent = CONFIG.email; a.href = "mailto:" + CONFIG.email; show("email"); }
+  if (CONFIG.instagram) { const h = CONFIG.instagram.replace(/^@/, ""); const a = $("#c-ig"); a.textContent = "@" + h; a.href = "https://www.instagram.com/" + h + "/"; show("instagram"); }
+  if (CONFIG.facebook) { const a = $("#c-fb"); a.textContent = "facebook.com/" + CONFIG.facebook; a.href = "https://www.facebook.com/" + CONFIG.facebook; show("facebook"); }
+  if (CONFIG.x) { const h = CONFIG.x.replace(/^@/, ""); const a = $("#c-x"); a.textContent = "@" + h; a.href = "https://x.com/" + h; show("x"); }
+  if (CONFIG.linkedin) { $("#c-li").href = CONFIG.linkedin; show("linkedin"); }
+
+  const sEmail = CONFIG.sponsorshipEmail || CONFIG.email;
+  if (sEmail) {
+    $("#sponsor-btn").href = "mailto:" + sEmail + "?subject=" + encodeURIComponent("Sponsoring OUCB");
+    const addr = $("#sponsor-addr"); addr.textContent = sEmail; addr.hidden = false;
+  }
+
+  // Sponsor wall
+  const wall = $("#wall");
+  const headline = SPONSORS.filter((s) => s.tier === "headline");
+  const partners = SPONSORS.filter((s) => s.tier !== "headline");
+  const slot = (s, isHeadline) => {
+    const el = document.createElement(s && s.url ? "a" : "div");
+    el.className = "slot" + (isHeadline ? " headline" : "") + (s ? " filled" : "");
+    if (s) {
+      if (s.url) {
+        el.href = s.url;
+        if (/^https?:/.test(s.url)) { el.target = "_blank"; el.rel = "noopener"; }
+        el.setAttribute("aria-label", s.name + (isHeadline ? ", headline sponsor" : ", sponsor"));
+      }
+      if (s.logo) {
+        const plate = document.createElement("span"); plate.className = "plate";
+        const img = document.createElement("img"); img.src = s.logo; img.alt = s.name;
+        plate.append(img); el.append(plate);
+      } else { const t = document.createElement("span"); t.className = "t"; t.textContent = s.name; el.append(t); }
+      const lab = document.createElement("span"); lab.className = "s";
+      lab.textContent = (isHeadline ? "Headline sponsor" : "Sponsor") + (s.url ? " · View" : "");
+      el.append(lab);
+    } else {
+      const wrap = document.createElement("div");
+      wrap.innerHTML = '<div class="t"></div><div class="s">Available</div>';
+      wrap.firstChild.textContent = isHeadline ? "Headline partner" : "Partner";
+      el.append(wrap);
+    }
+    return el;
+  };
+  (headline.length ? headline : [null]).forEach((s) => wall.append(slot(s, true)));
+  const pCount = Math.max(3, Math.ceil(partners.length / 3) * 3);
+  for (let i = 0; i < pCount; i++) wall.append(slot(partners[i] || null, false));
+
+  // ---------- Mailing list ----------
+  const COLLEGES = ["All Souls","Balliol","Blackfriars","Brasenose","Campion Hall","Christ Church","Corpus Christi","Exeter","Green Templeton","Harris Manchester","Hertford","Jesus","Keble","Kellogg","Lady Margaret Hall","Linacre","Lincoln","Magdalen","Mansfield","Merton","New College","Nuffield","Oriel","Pembroke","The Queen’s College","Regent’s Park","Reuben","St Anne’s","St Antony’s","St Catherine’s","St Cross","St Edmund Hall","St Hilda’s","St Hugh’s","St John’s","St Peter’s","St Stephen’s House","Somerville","Trinity","University College","Wadham","Wolfson","Worcester","Wycliffe Hall","Not at Oxford"];
+  const dl = $("#colleges");
+  COLLEGES.forEach((c) => { const o = document.createElement("option"); o.value = c; dl.append(o); });
+
+  let topLevel = false;
+  try { topLevel = window.self === window.top; } catch (e) { topLevel = false; }
+
+  const mlForm = $("#ml-form"), mlStatus = $("#ml-status"), mlBtn = $("#ml-submit");
+  const setErr = (id, msg) => {
+    const input = $("#" + id), err = $("#" + id + "-err");
+    if (msg) { err.textContent = msg; err.hidden = false; input.setAttribute("aria-invalid", "true"); input.setAttribute("aria-describedby", id + "-err"); }
+    else { err.hidden = true; input.removeAttribute("aria-invalid"); input.removeAttribute("aria-describedby"); }
+  };
+  ["ml-name", "ml-email", "ml-consent"].forEach((id) => $("#" + id).addEventListener("input", () => setErr(id, "")));
+  ["ml-consent"].forEach((id) => $("#" + id).addEventListener("change", () => setErr(id, "")));
+
+  mlForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    mlStatus.textContent = ""; mlStatus.classList.remove("bad");
+    const name = $("#ml-name").value.trim();
+    const email = $("#ml-email").value.trim();
+    const consent = $("#ml-consent").checked;
+    let firstBad = null;
+    if (!name) { setErr("ml-name", "Enter your name."); firstBad = firstBad || "ml-name"; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setErr("ml-email", "Enter a valid email address, like name@college.ox.ac.uk."); firstBad = firstBad || "ml-email"; }
+    if (!consent) { setErr("ml-consent", "Tick the box so we can email you."); firstBad = firstBad || "ml-consent"; }
+    if (firstBad) { $("#" + firstBad).focus(); return; }
+
+    const done = () => {
+      $("#ml-done-text").textContent = "We’ll email " + email + " about upcoming events.";
+      mlForm.hidden = true; $("#ml-done").hidden = false;
+    };
+    if ($("#ml-hp").value) { done(); return; }           // spam bot filled the hidden field
+    if (!topLevel) {                                      // previews block outside requests
+      mlStatus.textContent = "Preview only: sign-ups are sent once the site is live on oucb.uk.";
+      return;
+    }
+
+    mlBtn.disabled = true; mlBtn.textContent = "Sending…";
+    try {
+      const r = await fetch(CONFIG.mailingListEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          _subject: "New mailing list sign-up: " + name,
+          _template: "table",
+          _honey: "",
+          name, email,
+          college: $("#ml-college").value.trim() || "—",
+          subject: $("#ml-course").value || "—",
+          year: $("#ml-year").value || "—",
+          consent: "Yes",
+          signed_up: new Date().toLocaleString("en-GB", { timeZone: "Europe/London" })
+        })
+      });
+      const data = await r.json().catch(() => ({}));
+      if (r.ok && String(data.success) === "true") { done(); return; }
+      throw new Error(data.message || "Request failed");
+    } catch (err) {
+      mlStatus.textContent = "We couldn’t send your sign-up. Try again, or email " + (CONFIG.email || "us") + ".";
+      mlStatus.classList.add("bad");
+    } finally {
+      mlBtn.disabled = false; mlBtn.textContent = "Join the mailing list";
+    }
+  });
+
+  // ---------- Motion ----------
+  const header = $(".site-header");
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Hero 'O' atom: electrons only run while hovered; nucleus leans toward the pointer
+  const heroMark = $(".hero-mark"), heroSvg = $("#hero-mono");
+  if (heroMark && heroSvg) {
+    const pause = () => { try { heroSvg.pauseAnimations(); } catch (e) {} };
+    const play = () => { if (!reduce) { try { heroSvg.unpauseAnimations(); } catch (e) {} } };
+    pause();
+    const lean = (mx, my) => { heroMark.style.setProperty("--mx", mx + "px"); heroMark.style.setProperty("--my", my + "px"); };
+    heroMark.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") play(); });
+    heroMark.addEventListener("pointermove", (e) => {
+      if (e.pointerType !== "mouse" || reduce) return;
+      const r = heroSvg.getBoundingClientRect(), s = 100 / r.width;
+      const dx = (e.clientX - r.left) * s - 25, dy = (e.clientY - r.top) * s - 25;
+      const c = (v) => Math.max(-3.5, Math.min(3.5, v * 0.09));
+      lean(c(dx), c(dy));
+    });
+    heroMark.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") { lean(0, 0); pause(); } });
+    // Touch: tap the logo to toggle the effect
+    heroMark.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "mouse") return;
+      const on = heroMark.classList.toggle("lit");
+      on ? play() : pause();
+    });
+  }
+  if (!reduce && "IntersectionObserver" in window) {
+    // Content stays visible at rest; each block plays a short rise just before it scrolls into view.
+    const targets = document.querySelectorAll(".block .sec-head, .block .prose, .grid2 > .act, .card-col, .ml-card, .wall > .slot, .offer > div, .sponsor-cta, .foot-top");
+    targets.forEach((el) => {
+      const i = Array.from(el.parentElement.children).indexOf(el);
+      el.style.setProperty("--d", (i % 4) * 90 + "ms");
+      el.classList.add("reveal");
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { rootMargin: "0px 0px 12% 0px" });
+    targets.forEach((el) => {
+      // Skip blocks already on screen at load so nothing blinks out and back in
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight) return;
+      io.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>
