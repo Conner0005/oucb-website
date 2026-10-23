@@ -28,6 +28,10 @@ Add a line to `SPONSORS` in `index.html`:
 
 Upload the logo to `assets/sponsors/` first. `tier` is `"headline"` or `"partner"`. A sponsor page can live at `sponsorship/<name>/index.html`; copy `sponsorship/tpp/index.html` as a starting point.
 
+### Committee
+
+Edit `committee/index.html`. Each member is one `<li>` block: copy one, then change the name, role, college and subject. The tile shows two initials (e.g. `Ak`) and is coloured by subject: `tile chem` or `tile bio`.
+
 ## Mailing list
 
 Sign-ups are emailed to ouchemsoc@gmail.com through [FormSubmit](https://formsubmit.co). The first submission from a new address triggers an activation email from FormSubmit; click its link once, or sign-ups won't be delivered.
@@ -35,6 +39,7 @@ Sign-ups are emailed to ouchemsoc@gmail.com through [FormSubmit](https://formsub
 ## Files
 
 - `index.html`: the homepage
+- `committee/`: committee page
 - `sponsorship/tpp/`: TPP sponsor page
 - `assets/sponsors/`: sponsor logos and banners
 - `Home/`, `events/`, `join-the-mailing-list/`, `sponsorship/`, `become-a-member/`: redirects from the old site's addresses to the matching section of the homepage

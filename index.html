@@ -118,7 +118,8 @@ h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
 }
 .nav a:not(.btn):hover { color: var(--on-brand); background: rgba(255,255,255,0.06); }
 .nav .btn { margin-left: 8px; }
-@media (max-width: 1000px) { .nav a:not(.btn) { display: none; } }
+@media (max-width: 1180px) { .brand-name { display: none; } }
+@media (max-width: 900px) { .nav a:not(.btn) { display: none; } }
 .site-header { transition: box-shadow .25s ease; }
 .site-header.scrolled { box-shadow: 0 8px 24px -12px rgba(4, 20, 14, 0.55); }
 @media (max-width: 520px) { .brand-name { display: none; } }
@@ -232,6 +233,8 @@ section.block.alt { background: var(--surface); }
 }
 .prose p { margin: 0 0 1em; max-width: 62ch; }
 .prose p:first-child { font-size: 1.24rem; line-height: 1.5; }
+.prose p.more-link { font-family: var(--f-display); font-weight: 500; font-size: 16px; margin-top: 4px; }
+.prose p.more-link a::after { content: " →"; }
 
 blockquote.curie {
   margin: 36px 0 0; padding: 26px 0 0; border-top: 1px solid var(--line);
@@ -443,10 +446,10 @@ a.slot.filled:hover .s { color: var(--ink); }
     <nav class="nav" aria-label="Main">
       <a href="#about">About</a>
       <a href="#activities">What we do</a>
+      <a href="committee/">Committee</a>
       <a href="#membership">Membership</a>
       <a href="#mailing-list">Mailing list</a>
       <a href="#sponsors">Sponsors</a>
-      <a href="#contact">Contact</a>
       <a class="btn btn-gold" href="#membership" data-member-link>Join</a>
     </nav>
   </div>
@@ -482,6 +485,7 @@ a.slot.filled:hover .s { color: var(--ink); }
       <div class="prose">
         <p>We run regular academic talks, workshops and social events for students with a passion for chemistry, biochemistry and other STEM subjects.</p>
         <p>OUCB is a chance to meet people across colleges and years, and to talk to professionals working in different fields of science. We often collaborate with other Oxford science societies.</p>
+        <p class="more-link"><a href="committee/">Meet the 2026–27 committee</a></p>
         <blockquote class="curie">
           <span class="q" aria-hidden="true">“</span>
           <div>
@@ -678,6 +682,7 @@ a.slot.filled:hover .s { color: var(--ink); }
           <dt data-row="facebook" hidden>Facebook</dt><dd data-row="facebook" hidden><a id="c-fb" href="#" target="_blank" rel="noopener"></a></dd>
           <dt data-row="x" hidden>X</dt><dd data-row="x" hidden><a id="c-x" href="#" target="_blank" rel="noopener"></a></dd>
           <dt data-row="linkedin" hidden>LinkedIn</dt><dd data-row="linkedin" hidden><a id="c-li" href="#" target="_blank" rel="noopener">OUCB on LinkedIn</a></dd>
+          <dt>Committee</dt><dd><a href="committee/">Meet the committee</a></dd>
           <dt>Join</dt><dd><a href="#membership" data-member-link>Membership form</a></dd>
           <dt>News</dt><dd><a href="#mailing-list">Mailing list sign-up</a></dd>
         </dl>

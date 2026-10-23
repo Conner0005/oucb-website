@@ -61,7 +61,8 @@ h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; }
 .nav a { color: var(--mint); text-decoration: none; font-family: var(--f-display); font-size: 15px; font-weight: 500; padding: 8px 12px; border-radius: 3px; }
 .nav a:not(.btn):hover { color: var(--on-brand); background: rgba(255,255,255,0.06); }
 .nav .btn { margin-left: 8px; padding: 9px 16px; font-size: 15px; }
-@media (max-width: 860px) { .nav a:not(.btn):not(.keep) { display: none; } }
+@media (max-width: 1180px) { .brand-name { display: none; } }
+@media (max-width: 900px) { .nav a:not(.btn):not(.keep) { display: none; } }
 @media (max-width: 520px) { .brand-name { display: none; } }
 
 .btn { display: inline-flex; align-items: center; gap: 10px; justify-content: center; font-family: var(--f-display); font-weight: 700; font-size: 16px; padding: 13px 22px; border-radius: 3px; text-decoration: none; border: 1.5px solid transparent; transition: transform .15s ease, background-color .15s ease; }
@@ -151,6 +152,7 @@ section.block + section.block { border-top: 1px solid var(--line); }
     <nav class="nav" aria-label="Main">
       <a href="../../#about">About</a>
       <a href="../../#activities">What we do</a>
+      <a href="../../committee/">Committee</a>
       <a href="../../#membership">Membership</a>
       <a href="../../#mailing-list">Mailing list</a>
       <a href="../../#sponsors">Sponsors</a>
@@ -244,6 +246,7 @@ section.block + section.block { border-top: 1px solid var(--line); }
     <nav class="foot-links" aria-label="Footer">
       <a href="../../">Home</a>
       <a href="../../#sponsors">All sponsors</a>
+      <a href="../../committee/">Committee</a>
       <a href="../../#contact">Contact</a>
       <a href="https://www.instagram.com/_oucb_/" target="_blank" rel="noopener">Instagram</a>
     </nav>
